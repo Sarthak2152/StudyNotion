@@ -47,8 +47,8 @@ app.use("/api/v1/reach", contactUsRoutes);
 // default route
 app.get("*", (req, res) => {
   return res.status(404).json({
-    success: false,
-    message: "This route does'nt exists",
+    success: true,
+    message: "Server is up",
   });
 });
 
