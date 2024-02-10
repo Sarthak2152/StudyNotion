@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: `${process.env.CORS_ORIGIN_URL}`,
     credentials: true,
   }),
 );
@@ -44,7 +44,7 @@ app.use("/api/v1/payment", paymentRoutes);
 app.use("/api/v1/reach", contactUsRoutes);
 
 // default route
-app.get("*", (req, res) => {
+app.get("/", (req, res) => {
   return res.status(404).json({
     success: true,
     message: "Server is up",
