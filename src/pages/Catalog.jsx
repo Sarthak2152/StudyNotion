@@ -5,6 +5,7 @@ import Error from "./Error";
 import CourseCard from "../components/core/Catalog/CourseCard";
 import CourseSlider from "../components/core/Catalog/CourseSlider";
 import { useState, useEffect } from "react";
+import { PropagateLoader } from "react-spinners";
 function Catalog() {
   const { categoryId } = useParams();
 
@@ -22,7 +23,7 @@ function Catalog() {
         const result = await getCatalogPageData(categoryId);
         setCatalogPageData(result);
       } catch (error) {
-        console.log(error);
+        //console.log(error);
       }
     }
     getCategoryDetails();
@@ -32,9 +33,7 @@ function Catalog() {
   if (loading || !catalogPageData) {
     return (
       <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
-        <div className="spinner text-center text-4xl text-white">
-          Loading the data
-        </div>
+        <PropagateLoader color="#afb2bf" />
       </div>
     );
   }
@@ -42,10 +41,10 @@ function Catalog() {
     return <Error />;
   }
   return (
-    <>
+    <div>
       {/* Hero Section */}
-      <div className=" box-content bg-richblack-800 px-4">
-        <div className="mx-auto flex min-h-[260px] max-w-maxContentTab flex-col justify-center gap-4 lg:max-w-maxContent ">
+      <div className=" box-border bg-richblack-800 px-4">
+        <div className="mx-auto flex min-h-[260px] w-full  flex-col justify-center gap-4 lg:max-w-maxContent ">
           <p className="text-sm text-richblack-300">
             {`Home / Catalog / `}
             <span className="text-yellow-25">
@@ -62,7 +61,7 @@ function Catalog() {
       </div>
 
       {/* Section 1 */}
-      <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
+      <div className=" mx-auto box-border w-full  px-4 py-12 lg:max-w-maxContent">
         <div className="section_heading">Courses to get you started</div>
         <div className="my-4 flex border-b border-b-richblack-600 text-sm">
           <p
@@ -86,18 +85,18 @@ function Catalog() {
             New
           </p>
         </div>
-        <div>
+        <div className="overflow-y-hidden">
           <CourseSlider
             Courses={catalogPageData?.data?.selectedCategory?.courses}
           />
         </div>
       </div>
       {/* Section 2 */}
-      <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
+      <div className=" mx-auto box-border w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
         <div className="section_heading">
           Top courses in {catalogPageData?.data?.differentCategory?.name}
         </div>
-        <div className="py-8">
+        <div className="overflow-hidden py-8">
           <CourseSlider
             Courses={catalogPageData?.data?.differentCategory?.courses}
           />
@@ -105,19 +104,23 @@ function Catalog() {
       </div>
 
       {/* Section 3 */}
-      <div className=" mx-auto box-content w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
+      <div className=" mx-auto  w-full   px-4 py-12 ">
         <div className="section_heading">Frequently Bought</div>
         <div className="py-8">
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
             {catalogPageData?.data?.mostSellingCourses
               ?.slice(0, 4)
               .map((course, i) => (
-                <CourseCard course={course} key={i} Height={"h-[400px]"} />
+                <CourseCard
+                  course={course}
+                  key={i}
+                  Height={"lg:h-[400px] h-[300px]"}
+                />
               ))}
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

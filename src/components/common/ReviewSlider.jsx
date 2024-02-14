@@ -31,13 +31,17 @@ function ReviewSlider() {
     <div className=" text-white">
       <div className="mx-auto my-[50px] h-[184px] w-full max-w-maxContentTab px-8 lg:max-w-full">
         <Swiper
-          slidesPerView={3}
+          slidesPerView={1}
           spaceBetween={25}
           loop={true}
           freeMode={true}
           autoplay={{
             delay: 2500,
             disableOnInteraction: false,
+          }}
+          breakpoints={{
+            600: { slidesPerView: 2 },
+            800: { slidesPerView: 3 },
           }}
           modules={[FreeMode, Pagination, Autoplay]}
           className="w-full  "

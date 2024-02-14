@@ -9,8 +9,7 @@ function RenderCartCourses() {
 
   const { cart } = useSelector((state) => state.cart);
   useEffect(() => {
-    console.log("THIS IS ME");
-    console.log("This is cart ", cart);
+    //console.log("This is cart ", cart);
   }, []);
   return (
     <div className="flex flex-1 flex-col">

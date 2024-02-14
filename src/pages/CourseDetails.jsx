@@ -13,6 +13,8 @@ import { formattedDate } from "../utils/dateFormatter";
 import Markdown from "react-markdown";
 import { buyCourse } from "../services/operations/studentFeaturesAPI";
 import LoginModal from "../components/core/Course/LoginModal";
+import { PropagateLoader } from "react-spinners";
+import { Button } from "@/components/ui/button";
 function CourseDetails() {
   // global states
   const { user } = useSelector((state) => state.profile);
@@ -31,10 +33,10 @@ function CourseDetails() {
     (async function () {
       try {
         const res = await fetchCourseDetails(courseId);
-        console.log("this is inside the comp: ", res);
+        // console.log("this is inside the comp: ", res);
         setResponse(res);
       } catch (error) {
-        console.log("Could not fetch course details");
+        // console.log("Could not fetch course details");
       }
     })();
   }, [courseId]);
@@ -66,12 +68,12 @@ function CourseDetails() {
   if (loading || !response) {
     return (
       <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
-        <div className="spinner text-center text-white">Loading</div>
+        <PropagateLoader color="#afb2bf" />
       </div>
     );
   }
 
-  if (!response.success) {
+  if (!response?.success) {
     return <Error />;
   }
 
@@ -100,7 +102,7 @@ function CourseDetails() {
   if (paymentLoading) {
     return (
       <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
-        <div className="spinner text-center text-white">Loading</div>
+        <PropagateLoader color="#afb2bf" />
       </div>
     );
   }
@@ -109,7 +111,7 @@ function CourseDetails() {
     <>
       <div className={`relative w-full bg-richblack-800`}>
         {/* Hero Section */}
-        <div className="mx-auto box-content px-4 lg:w-[1260px] 2xl:relative ">
+        <div className="mx-auto box-border px-4 lg:w-[1260px] 2xl:relative ">
           <div className="mx-auto grid min-h-[450px] max-w-maxContentTab justify-items-center py-8 lg:mx-0 lg:justify-items-start lg:py-0 xl:max-w-[810px]">
             <div className="relative block max-h-[30rem] lg:hidden">
               <div className="absolute bottom-0 left-0 h-full w-full shadow-[#161D29_0px_-64px_36px_-28px_inset]"></div>
@@ -154,10 +156,12 @@ function CourseDetails() {
               <p className="space-x-3 pb-4 text-3xl font-semibold text-richblack-5">
                 Rs. {price}
               </p>
-              <button className="yellowButton" onClick={handleBuyCourse}>
+              <Button variant="yellow" onClick={handleBuyCourse}>
                 Buy Now
-              </button>
-              <button className="blackButton">Add to Cart</button>
+              </Button>
+              <Button variant="normal" className="bg-richblack-500">
+                Add to Cart
+              </Button>
             </div>
           </div>
           {/* Courses Card */}
@@ -169,7 +173,7 @@ function CourseDetails() {
           </div>
         </div>
       </div>
-      <div className="mx-auto box-content px-4 text-start text-richblack-5 lg:w-[1260px]">
+      <div className="tent mx-auto px-4 text-start text-richblack-5 lg:w-[1260px]">
         <div className="mx-auto max-w-maxContentTab lg:mx-0 xl:max-w-[810px]">
           {/* What will you learn section */}
           <div className="my-8 border border-richblack-600 p-8">
@@ -191,7 +195,7 @@ function CourseDetails() {
                   <span>
                     {totalNoOfLectures} {`lecture(s)`}
                   </span>
-                  <span>{response.data?.totalDuration} total length</span>
+                  <span>{response?.data?.totalDuration} total length</span>
                 </div>
                 <div>
                   <button

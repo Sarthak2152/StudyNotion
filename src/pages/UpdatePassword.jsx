@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import { Button } from "../components/ui/button";
 import { resetPassword } from "../services/operations/authAPI";
 // import { resetPassword } from "../services/operations/authAPI";
-
+import { PropagateLoader } from "react-spinners";
 function UpdatePassword() {
   const { loading } = useSelector((state) => state.auth);
   const [formData, setFormData] = useState({
@@ -45,7 +45,7 @@ function UpdatePassword() {
   return (
     <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
       {loading ? (
-        <div className="text-center text-richblack-5">loading...</div>
+        <PropagateLoader color="#afb2bf" />
       ) : (
         <div className="max-w-[500px] p-4 lg:p-8">
           <h1 className="text-[1.875rem] font-semibold leading-[2.375rem] text-richblack-5">

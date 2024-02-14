@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useSelector, useDispatch } from "react-redux";
 import { getPasswordResetToken } from "../services/operations/authAPI";
+import { PropagateLoader } from "react-spinners";
 function ForgotPassword() {
   const [email, setEmail] = useState("");
   const [emailSent, setEmailSent] = useState(false);
@@ -22,8 +23,8 @@ function ForgotPassword() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center text-richblack-5">
-        loading....
+      <div className="flex min-h-[calc(100vh-3.5rem)] items-center justify-center text-richblack-5">
+        <PropagateLoader color="#afb2bf" />
       </div>
     );
   }

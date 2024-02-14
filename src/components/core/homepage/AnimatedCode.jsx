@@ -2,7 +2,7 @@ import { TypeAnimation } from "react-type-animation";
 function AnimatedCode({ color, bgColor }) {
   let shadow = ` shadow-[0px_0px_200px_90px_${bgColor}] `;
   return (
-    <div className="relative z-10 flex w-1/2 select-none flex-row gap-3  rounded-lg border-2 border-richblack-600 bg-richblack-900/95 px-4 py-2 text-richblack-200">
+    <div className="relative z-10 order-2 flex w-full select-none flex-row gap-3 rounded-lg  border-2 border-richblack-600 bg-richblack-900/95 px-4 py-2 text-richblack-200 xl:w-1/2">
       <div className="flex flex-col items-center justify-center font-bold">
         <p>1</p>
         <p>2</p>

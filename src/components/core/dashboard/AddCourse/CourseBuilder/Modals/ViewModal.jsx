@@ -100,7 +100,6 @@ function ViewModal({ viewData, open = false, setOpen }) {
                   <Button
                     onClick={() => {
                       setOpen(false);
-                      console.log("I am herhe");
                     }}
                     type="button"
                     variant="yellow"

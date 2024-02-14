@@ -30,17 +30,17 @@ const VideoDetails = () => {
       if (!courseId && !sectionId && !subsectionId) {
         navigate(`/dashboard/enrolled-courses`);
       } else {
-        console.log("courseSectionData", courseSectionData);
+        //console.log("courseSectionData", courseSectionData);
         const filteredData = courseSectionData.filter(
           (course) => course._id === sectionId,
         );
-        console.log("filteredData", filteredData);
+        //console.log("filteredData", filteredData);
         const filteredVideoData = filteredData?.[0]?.subSection.filter(
           (data) => data._id === subsectionId,
         );
-        console.log("filteredVideoData", filteredVideoData);
+        //console.log("filteredVideoData", filteredVideoData);
         setVideoData(filteredVideoData?.[0]);
-        console.log("THIS IS VIDEO DATA:: ", filteredVideoData[0]);
+        //console.log("THIS IS VIDEO DATA:: ", filteredVideoData[0]);
         setPreviewSource(courseEntireData.thumbnail);
         setVideoEnded(false);
       }

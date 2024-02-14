@@ -33,7 +33,7 @@ function CourseBuilderForm() {
 
   async function submitHandler(data) {
     setLoading(true);
-    console.log("SubmitHandler ", data);
+    //console.log("SubmitHandler ", data);
     let result = null;
     if (editSectionName) {
       result = await updateSection(token, {
@@ -47,7 +47,7 @@ function CourseBuilderForm() {
         sectionName: data.sectionName,
       });
     }
-    console.log(result);
+    //console.log(result);
     if (result) {
       dispatch(courseActions.setCourse(result));
       setValue("sectionName", "");

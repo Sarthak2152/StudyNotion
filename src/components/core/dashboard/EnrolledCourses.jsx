@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { getEnrolledCourses } from "../../../services/operations/profileAPI";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { PropagateLoader } from "react-spinners";
 function EnrolledCourses() {
   const { token } = useSelector((state) => state.auth);
   const [enrolledCourses, setEnrolledCourses] = useState(null);
@@ -10,7 +11,7 @@ function EnrolledCourses() {
     try {
       const res = await getEnrolledCourses(token);
       setEnrolledCourses(res);
-      console.log(res);
+      //console.log(res);
     } catch (error) {
       console.log("Error while fetching user enrolled courses");
     }
@@ -22,11 +23,11 @@ function EnrolledCourses() {
   }, []);
 
   return (
-    <div className="w-full p-16">
+    <div className="w-full p-4 md:p-8 lg:p-16">
       <div className="text-3xl text-richblack-50">Enrolled Courses</div>
       {!enrolledCourses ? (
         <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
-          <div>Loading....</div>
+          <PropagateLoader color="#afb2bf" />
         </div>
       ) : !enrolledCourses.length ? (
         <p className="grid h-[10vh] w-full place-content-center text-richblack-5">

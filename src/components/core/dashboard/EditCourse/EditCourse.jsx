@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { courseActions } from "../../../../slices/courseSlice";
 import RenderSteps from "../AddCourse/RenderSteps";
 import { getFullDetailsOfCourse } from "../../../../services/operations/courseDetailsAPI";
+import { PropagateLoader } from "react-spinners";
 function EditCourse() {
   const dispatch = useDispatch();
 
@@ -31,14 +32,14 @@ function EditCourse() {
 
   if (loading) {
     return (
-      <div className="grid flex-1 place-items-center">
-        <div className="spinner text-4xl text-white">Loading </div>
+      <div className="grid min-h-[calc(100vh-3.5rem)] flex-1 place-items-center">
+        <PropagateLoader color="#afb2bf" />
       </div>
     );
   }
 
   return (
-    <div className="w-full p-16">
+    <div className="w-full p-4 md:p-12 lg:p-16">
       <h1 className="mb-14 text-3xl font-medium text-richblack-5">
         Edit Course
       </h1>

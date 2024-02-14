@@ -5,9 +5,9 @@ import logo3 from "../../../assets/TimeLineLogo/Logo3.svg";
 import logo4 from "../../../assets/TimeLineLogo/Logo4.svg";
 function Timeline() {
   return (
-    <div className="mx-auto mt-[3.25rem] flex w-9/12 flex-row ">
+    <div className="mx-auto mt-[3.25rem] flex flex-col gap-8 lg:w-9/12 lg:flex-row lg:gap-4 ">
       {/* body */}
-      <article className="flex w-[40%] items-center justify-center">
+      <article className="flex w-full items-center justify-center lg:w-[40%]">
         <div className="space-y-8">
           <article className="flex items-center gap-6">
             <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white p-1">
@@ -56,7 +56,7 @@ function Timeline() {
         </div>
       </article>
       {/* Image */}
-      <div className="w-[60%]">
+      <div className="mx-auto w-[90%] sm:w-[60%] lg:w-[40%]">
         <img src={timeline} alt="timeline" className="w-full" />
       </div>
     </div>

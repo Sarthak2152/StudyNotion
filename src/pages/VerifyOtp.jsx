@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
 import { RxCountdownTimer } from "react-icons/rx";
 import { sendOtp, signUp } from "../services/operations/authAPI";
+import { PropagateLoader } from "react-spinners";
 function VerifyOtp() {
   const { loading } = useSelector((state) => state.auth);
   const { signUpData } = useSelector((state) => state.auth);
@@ -46,7 +47,7 @@ function VerifyOtp() {
     <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
       {loading ? (
         <div className="text-richblack-5">
-          <div> Loading....</div>
+          <PropagateLoader color="#afb2bf" />
         </div>
       ) : (
         <div className="max-w-[500px] p-4 lg:p-8">

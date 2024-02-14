@@ -3,21 +3,18 @@ import { formattedDate } from "../../../utils/dateFormatter";
 import { RiEditBoxLine } from "react-icons/ri";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { PropagateLoader } from "react-spinners";
 function MyProfile() {
   const { loading: profileLoading, user } = useSelector(
     (state) => state.profile,
   );
   const navigate = useNavigate();
   if (profileLoading) {
-    return (
-      <div className="flex h-32 text-center text-4xl text-white">
-        Loading...
-      </div>
-    );
+    return <PropagateLoader color="#afb2bf" />;
   }
 
   return (
-    <div className="w-full p-16">
+    <div className="w-full p-4 md:p-12 lg:p-16">
       <h1 className="mb-14 text-3xl font-medium text-richblack-5">
         My Profile
       </h1>

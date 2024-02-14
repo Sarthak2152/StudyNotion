@@ -18,7 +18,7 @@ function NestedView({ handleChangeEditSectionName }) {
   // global states
   const { token } = useSelector((state) => state.auth);
   const { course } = useSelector((state) => state.course);
-  console.log("THIS IS COURSE", course);
+  //console.log("THIS IS COURSE", course);
   const dispatch = useDispatch();
 
   const [open, setOpen] = useState(false);
@@ -129,7 +129,7 @@ function NestedView({ handleChangeEditSectionName }) {
                       para="This lecture will be deleted"
                       loading={loading}
                       handler={() => {
-                        console.log("This is section data.... ", data);
+                        //console.log("This is section data.... ", data);
                         handleDeleteSubSection(data._id, section._id);
                       }}
                     />

@@ -4,6 +4,7 @@ import { getInstructorData } from "../../../../services/operations/profileAPI";
 import { Link } from "react-router-dom";
 import { fetchInstructorCourses } from "../../../../services/operations/courseDetailsAPI";
 import InstructorChart from "./InstructorChart";
+import { PropagateLoader } from "react-spinners";
 function Instructor() {
   const { token } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.profile);
@@ -16,8 +17,8 @@ function Instructor() {
       setLoading(true);
       const instructorApiData = await getInstructorData(token);
       const result = await fetchInstructorCourses(token);
-      console.log("Instructor API DATA:: ", instructorApiData);
-      console.log("INSTRUCTOR courses:: ", result);
+      //console.log("Instructor API DATA:: ", instructorApiData);
+      //console.log("INSTRUCTOR courses:: ", result);
       if (instructorApiData.length) setInstructorData(instructorApiData);
       if (result) {
         setCourses(result);
@@ -37,7 +38,7 @@ function Instructor() {
   );
 
   return (
-    <div className="w-full p-16">
+    <div className="w-full p-4 md:p-12 lg:p-16">
       <div className="space-y-2">
         <h1 className="text-2xl font-bold text-richblack-5">
           Hi {user?.firstName} 👋
@@ -47,7 +48,7 @@ function Instructor() {
         </p>
       </div>
       {loading ? (
-        <div className="spinner"></div>
+        <PropagateLoader color="#afb2bf" />
       ) : courses.length > 0 ? (
         <div>
           <div className="my-4 flex h-[450px] space-x-4">

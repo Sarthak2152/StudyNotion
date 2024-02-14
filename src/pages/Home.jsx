@@ -9,19 +9,22 @@ import RotatedImages from "../components/core/homepage/RotatedImages";
 import BecomeInstructor from "../components/core/homepage/BecomeInstructor";
 import TabSection from "../components/core/homepage/TabSection";
 import ReviewSlider from "../components/common/ReviewSlider";
+import { Link } from "react-router-dom";
 function Home() {
   return (
     <div className="min-h-screen overflow-hidden bg-richblack-900 pt-10 font-inter">
       {/* SECTION - 1 */}
       <section className="w-full bg-richblack-900 text-richblack-5">
         {/* PART ONE */}
-        <div className="mx-auto mb-14 w-[70%] space-y-[2rem] pt-5 text-center">
-          <button className="mx-auto flex flex-row items-center gap-1 rounded-full border-2 border-richblack-800 bg-richblack-800 px-[1.1rem] py-[.4rem] text-lg text-richblack-200 transition-all duration-200 hover:bg-transparent">
-            <div>Become an instructor</div>
-            <div className="text-sm">
-              <ArrowRight />
-            </div>
-          </button>
+        <div className="mx-auto mb-14 w-[90%] space-y-[2rem] pt-5 text-center sm:w-[80%] md:w-[70%]">
+          <Link to="/signup">
+            <button className="mx-auto flex flex-row items-center gap-1 rounded-full border-2 border-richblack-800 bg-richblack-800 px-[1.1rem] py-[.4rem] text-lg text-richblack-200 transition-all duration-200 hover:bg-transparent">
+              <div>Become an instructor</div>
+              <div className="text-sm">
+                <ArrowRight />
+              </div>
+            </button>
+          </Link>
           <div className="space-y-[1rem]">
             <h1 className="text-4xl font-semibold">
               Empower Your Future with{" "}
@@ -35,16 +38,22 @@ function Home() {
             </p>
           </div>
           <div className="space-x-4">
-            <Button variant="yellow" size="lg">
-              Learn more
-            </Button>
-            <Button variant="normal" size="lg">
-              Book a demo
-            </Button>
+            <Link to="/login">
+              <Button variant="yellow" size="lg">
+                <div className="hidden md:block">Learn more</div>
+                <div className="block md:hidden">Login</div>
+              </Button>
+            </Link>
+            <Link to="/signup">
+              <Button variant="normal" size="lg">
+                <div className="hidden md:block">Book a demo</div>
+                <div className="block md:hidden">Sign Up</div>
+              </Button>
+            </Link>
           </div>
         </div>
         {/* PART TWO ->  VIDEO SECTION */}
-        <div className="mx-auto w-[60%] shadow-[0px_-10px_70px_0px_#118ab2a8]">
+        <div className="mx-auto w-[90%] shadow-[0px_-10px_70px_0px_#118ab2a8] sm:w-[80%] lg:w-[60%]">
           <AspectRatio
             ratio={16 / 9}
             className=" w-full shadow-[20px_20px_0px_0px_#F5F5F5] "
@@ -54,9 +63,9 @@ function Home() {
         </div>
 
         {/* PART THREE -> ANIMATED CODING BLOCKS */}
-        <div className="mx-auto flex w-[65%] flex-row gap-[6.125rem] py-[6rem]">
+        <div className="mx-auto flex w-[90%] flex-col gap-[6.125rem]  px-2 pb-[3rem] pt-[6rem]  sm:w-[70%] sm:px-10  xl:flex-row xl:px-0 xl:pb-[6rem]">
           {/* Card */}
-          <div className="flex w-1/2 flex-col justify-between gap-10">
+          <div className="order-1 flex flex-col justify-between gap-10 lg:w-1/2">
             {/* body */}
             <div className="space-y-3">
               <h1 className="text-4xl font-semibold">
@@ -71,18 +80,22 @@ function Home() {
             </div>
             {/* Actions */}
             <div className="space-x-5">
-              <Button variant="yellow">Try it Yourself</Button>
-              <Button variant="normal">Learn More</Button>
+              <Link to="/login">
+                <Button variant="yellow">Try it Yourself</Button>
+              </Link>
+              <Link to="/signup">
+                <Button variant="normal">Learn More</Button>
+              </Link>
             </div>
           </div>
           <AnimatedCode color="#FFD60A" />
         </div>
 
         {/* PART FOUR -> ANIMATED CODING BLOCK */}
-        <div className="mx-auto flex w-[65%] flex-row gap-[6.125rem]  py-[6rem]">
+        <div className="mx-auto flex w-[90%] flex-col  gap-[6.125rem]  px-2 pb-[6rem] pt-[2rem] sm:w-[70%] sm:px-10  xl:flex-row xl:px-0  xl:pt-[6rem]">
           <AnimatedCode color="#118ab2" bgColor="blue" />
           {/* Card */}
-          <div className="flex w-1/2 flex-col  gap-10">
+          <div className="order-1 flex w-full flex-col gap-10 xl:order-3  xl:w-1/2">
             {/* body */}
             <div className="space-y-3">
               <h1 className="text-4xl font-semibold">
@@ -99,8 +112,12 @@ function Home() {
             </div>
             {/* Actions */}
             <div className="space-x-5">
-              <Button variant="yellow">Continue Lesson</Button>
-              <Button variant="normal">Learn More</Button>
+              <Link to="/login">
+                <Button variant="yellow">Continue Lesson</Button>
+              </Link>
+              <Link to="/signup">
+                <Button variant="normal">Learn More</Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -112,26 +129,32 @@ function Home() {
       {/* SECTION - 2 */}
       <section className=" w-full bg-pure-greys-5 pb-[5rem] text-richblack-700 ">
         {/* BG - IMAGE SECTION */}
-        <div className="crossImage flex h-[20rem] w-full items-center justify-center bg-[url('../src/assets/Images/bghome.svg')]">
-          <div className="translate-y-10 space-x-8">
-            <Button variant="yellow">Explore Full Catalog </Button>
-            <Button variant="normal">Learn more</Button>
+        <div className="crossImage flex h-[10rem] w-full items-center justify-center bg-[url('../src/assets/Images/bghome.svg')] lg:h-[20rem]">
+          <div className="space-x-8 lg:translate-y-10">
+            <Link to="/catalog/65a9676b7b8cdef25ea5067b">
+              <Button variant="yellow">Explore Full Catalog </Button>
+            </Link>
+            <Link to="/login">
+              <Button variant="normal">Learn more</Button>
+            </Link>
           </div>
         </div>
         {/* JOB IN DEMAND SECTION */}
-        <div className="mx-auto mt-[5.62rem] flex w-9/12  justify-between  text-[1rem]">
+        <div className="mx-auto mt-[2rem] flex w-[90%] justify-between text-[1rem]  lg:mt-[5.62rem]  lg:w-9/12">
           <div className="w-[45%]">
             <h1 className="text-4xl font-semibold">
               Get the skills you need for a{" "}
               <HighlightText>job that is in demand.</HighlightText>
             </h1>
           </div>
-          <div className="w-[50%] space-y-12">
+          <div className="w-[50%] space-y-6 lg:space-y-12">
             <p>
               The modern StudyNotion is the dictates its own terms. Today, to be
               a competitive specialist requires more than professional skills.
             </p>
-            <Button variant="yellow">Learn more</Button>
+            <Link className="inline-block" to="/login">
+              <Button variant="yellow">Learn more</Button>
+            </Link>
           </div>
         </div>
         {/* TimeLine Section */}
@@ -144,8 +167,8 @@ function Home() {
       <section className="w-full bg-richblack-900  text-richblack-5">
         {/* Become Instructor */}
         <BecomeInstructor />
-        {/* REVIEWS <Carousel></Carousel> */}
-        <h1 className="mt-12 text-center text-4xl font-semibold">
+        {/* REVIEWS  */}
+        <h1 className="mt-12 text-center text-2xl  font-semibold lg:text-4xl">
           Reviews from other learners
         </h1>
         <ReviewSlider />

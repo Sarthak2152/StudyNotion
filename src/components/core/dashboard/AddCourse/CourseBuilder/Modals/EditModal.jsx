@@ -36,7 +36,6 @@ function EditModal({ editData }) {
 
   // Update the fields if form is in view or edit mode
   useEffect(() => {
-    console.log("This is fun");
     setValue("lectureTitle", editData?.title);
     setValue("lectureDesc", editData?.description);
     setValue("lectureVideo", editData?.videoURL);
@@ -86,7 +85,7 @@ function EditModal({ editData }) {
 
   // On form submit
   const onSubmit = async (data) => {
-    console.log(data);
+    // console.log(data);
     if (!isFormUpdated()) {
       toast.error("No changes made to form");
     } else {

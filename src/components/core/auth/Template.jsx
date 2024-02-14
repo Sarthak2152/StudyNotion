@@ -3,14 +3,14 @@ import { useSelector } from "react-redux";
 import frameImg from "../../../assets/Images/frame.png";
 import LoginForm from "./LoginForm";
 import SignupForm from "./SignupForm";
-
+import { PropagateLoader } from "react-spinners";
 function Template({ title, description1, description2, image, formType }) {
   const { loading } = useSelector((state) => state.auth);
 
   return (
     <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
       {loading ? (
-        <div className="spinner"></div>
+        <PropagateLoader color="#afb2bf" />
       ) : (
         <div className="mx-auto flex w-11/12 max-w-maxContent flex-col-reverse justify-between gap-y-12 py-12 md:flex-row md:gap-x-12 md:gap-y-0">
           <div className="mx-auto w-11/12 max-w-[450px] md:mx-0">

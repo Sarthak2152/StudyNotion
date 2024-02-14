@@ -1,7 +1,7 @@
 import RenderSteps from "./RenderSteps";
 function AddCourse() {
   return (
-    <div className="w-full p-16">
+    <div className="w-full p-4 md:p-12 lg:p-16">
       <div className="flex w-full items-start gap-x-6">
         <div className="flex flex-1 flex-col">
           <h1 className="mb-14 text-3xl font-medium text-richblack-5">

@@ -11,7 +11,7 @@ const allTabs = [
 ];
 function TabSection() {
   return (
-    <div className="relative mx-auto w-9/12 pb-[10rem] text-center">
+    <div className="relative mx-auto w-[90%] pb-[5rem] text-center lg:w-9/12 lg:pb-[10rem]">
       {/* HEADINGS */}
       <div className="space-y-2">
         <h1 className="text-4xl font-bold ">
@@ -27,11 +27,11 @@ function TabSection() {
           {allTabs.map((element, index) => {
             return (
               <TabsTrigger
-                className="mx-1 rounded-full hover:bg-richblack-900 hover:text-white data-[state=active]:bg-richblack-900 data-[state=active]:text-richblack-5"
+                className={`mx-1 rounded-full hover:bg-richblack-900 hover:text-white data-[state=active]:bg-richblack-900 data-[state=active]:text-richblack-5 ${index > 2 ? "hidden md:block" : ""}`}
                 key={index}
                 value={element}
               >
-                {element}
+                <p>{element}</p>
               </TabsTrigger>
             );
           })}
@@ -39,7 +39,7 @@ function TabSection() {
         {allTabs.map((element, index) => {
           return (
             <TabsContent key={index} value={element}>
-              <div className="absolute flex flex-row gap-10 ">
+              <div className="flex flex-col gap-10 lg:absolute lg:flex-row ">
                 {HomePageExplore[index].courses.map((data, index) => {
                   return (
                     <ExploreCard
