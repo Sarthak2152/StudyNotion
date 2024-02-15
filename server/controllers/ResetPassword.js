@@ -18,7 +18,7 @@ exports.resetPasswordToken = async function (req, res) {
       { token, resetPasswordExpires: Date.now() + 5 * 60 * 1000 },
       { new: true },
     );
-    const url = `http://localhost:5173/update-password/${token}`;
+    const url = `https://study-notion-iota-two.vercel.app/update-password/${token}`;
 
     await mailSender(
       email,
