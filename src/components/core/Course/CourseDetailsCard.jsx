@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { ACCOUNT_TYPE } from "../../../utils/constants";
 import { cartActions } from "../../../slices/cartSlice";
 import { toast } from "react-hot-toast";
 import { BsFillCaretRightFill } from "react-icons/bs";
@@ -30,7 +29,7 @@ function CourseDetailsCard({ course, handleBuyCourse }) {
   };
 
   const handleAddToCart = () => {
-    if (user && user?.accountType === ACCOUNT_TYPE.INSTRUCTOR) {
+    if (user && user?.accountType === "Instructor") {
       toast.error("You are an Instructor. You can't buy a course.");
       return;
     }

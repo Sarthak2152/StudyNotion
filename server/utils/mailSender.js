@@ -4,15 +4,16 @@ require("dotenv").config();
 const mailSender = async function (email, title, body) {
   try {
     let transporter = nodemailer.createTransport({
-      host: process.env.MAIL_HOST,
-      port: 2525,
+      host: "smtp-relay.brevo.com",
+      port: 587,
+      secure: false,
       auth: {
         user: process.env.MAIL_USER,
         pass: process.env.MAIL_PASSWORD,
       },
     });
     let info = await transporter.sendMail({
-      from: "Study Notion Team",
+      from: "demo.user14625@gmail.com",
       to: `${email}`,
       subject: `${title}`,
       html: `${body}`,

@@ -92,7 +92,7 @@ function Catalog() {
         </div>
       </div>
       {/* Section 2 */}
-      <div className=" mx-auto box-border w-full max-w-maxContentTab px-4 py-12 lg:max-w-maxContent">
+      <div className=" mx-auto box-border w-full  px-4 py-12 lg:max-w-maxContent">
         <div className="section_heading">
           Top courses in {catalogPageData?.data?.differentCategory?.name}
         </div>
@@ -104,10 +104,10 @@ function Catalog() {
       </div>
 
       {/* Section 3 */}
-      <div className=" mx-auto  w-full   px-4 py-12 ">
+      <div className=" mx-auto  w-full px-4  py-12 lg:max-w-maxContent ">
         <div className="section_heading">Frequently Bought</div>
         <div className="py-8">
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">
             {catalogPageData?.data?.mostSellingCourses
               ?.slice(0, 4)
               .map((course, i) => (

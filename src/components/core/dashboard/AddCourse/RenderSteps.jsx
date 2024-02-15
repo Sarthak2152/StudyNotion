@@ -58,7 +58,7 @@ function RenderSteps() {
         {steps.map((item) => (
           <React.Fragment key={item.id}>
             <div
-              className="flex min-w-[130px] flex-col items-center gap-y-2"
+              className="flex flex-col items-center gap-y-2 sm:min-w-[130px]"
               key={item.id}
             >
               <p

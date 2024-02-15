@@ -29,8 +29,8 @@ export const fetchCourseCategories = async function () {
     }
     return response.data.data;
   } catch (error) {
-    console.log(error.response.data.message);
-    console.log(error);
+    //console.log(error.response.data.message);
+    // console.log(error);
     toast.error("Cannot fetch categories");
   }
 };
@@ -54,7 +54,7 @@ export const addCourseDetails = async function (token, data) {
     console.log(
       "Error occurred in addCourseDetails function in COURSE Details API",
     );
-    console.log(error);
+    //console.log(error);
   }
   toast.dismiss(toastId);
   return result;
@@ -77,7 +77,7 @@ export const editCourseDetails = async function (token, data) {
     console.log(
       "Cannot edit course in EDIT_COURSE_DETAILS in COURSE_DETAILS_API",
     );
-    console.log(error);
+    //console.log(error);
   }
   toast.dismiss(toastId);
   return result;
@@ -104,7 +104,7 @@ export const fetchInstructorCourses = async function (token) {
     console.log(
       "Cannot fetch instructor courses in FETCH_INSTRUCTOR_COURSES IN COURSE_DETAILS_API",
     );
-    console.log(error);
+    // console.log(error);
   }
   toast.dismiss(toastId);
   return result;
@@ -131,7 +131,7 @@ export const deleteCourse = async function (token, courseId) {
     console.log(
       "Error occurred while deleting course in DELETE_COURSE in COURSE_DETAIL_API",
     );
-    console.log(error);
+    // console.log(error);
     toast.error("Cannot delete course");
   }
 
@@ -153,13 +153,13 @@ export const getFullDetailsOfCourse = async function (token, courseId) {
         Authorization: `Bearer ${token}`,
       },
     );
-    console.log("COURSE_FULL_DETAILS_API API RESPONSE............", response);
+    // console.log("COURSE_FULL_DETAILS_API API RESPONSE............", response);
     if (!response.data.success) {
       throw new Error(response.data.message);
     }
     result = response?.data?.data;
   } catch (error) {
-    console.log("COURSE_FULL_DETAILS_API API ERROR............", error);
+    // console.log("COURSE_FULL_DETAILS_API API ERROR............", error);
     result = error.response.data;
     toast.error(error.response.data.message);
   }
@@ -179,12 +179,12 @@ export const fetchCourseDetails = async function (courseId) {
       throw new Error(response.data.message);
     }
     result = response.data;
-    console.log("This is response: ", result);
+    // console.log("This is response: ", result);
   } catch (error) {
-    console.log(
-      "Something went wrong while fetching results in fetchCourseDetails in courseDetailsAPI",
-      error,
-    );
+    //  console.log(
+    //    "Something went wrong while fetching results in fetchCourseDetails in courseDetailsAPI",
+    //   error,
+    // );
     result = error.response.data;
   }
   toast.dismiss(toastId);
@@ -207,7 +207,7 @@ export const createSection = async function (token, data) {
     result = response.data.data;
   } catch (error) {
     console.log("Cannot create section in CREATE_SECTION in COURSE_DETAIL_API");
-    console.log(error);
+    //console.log(error);
     toast.error("Cannot create section");
   }
   toast.dismiss(toastId);
@@ -228,7 +228,7 @@ export const updateSection = async function (token, data) {
     result = response.data.data;
   } catch (error) {
     console.log("Cannot update the section in COURSE_DETAIL_API");
-    console.log(error);
+    //console.log(error);
     toast.error("Cannot update section");
   }
   toast.dismiss(toastId);
@@ -249,7 +249,7 @@ export const deleteSection = async function (token, data) {
     result = response.data.data;
   } catch (error) {
     console.log("Cannot delete section in COURSE_DETAIL_APi");
-    console.log(error);
+    //console.log(error);
     toast.error("Cannot delete section");
   }
   toast.dismiss(toastId);
@@ -272,7 +272,7 @@ export const createSubSection = async function (token, data) {
     result = response.data.data;
   } catch (error) {
     console.log("Cannot create subsection in COURSE_DETAIL_API");
-    console.log(error);
+    // console.log(error);
     toast.error("Cannot create subsection");
   }
   toast.dismiss();
@@ -292,7 +292,7 @@ export const updateSubSection = async function (token, data) {
     result = response.data.data;
   } catch (error) {
     console.log("Cannot update subsection in COURSE_DETAIL_API");
-    console.log(error);
+    // console.log(error);
     toast.error("Cannot update subsection");
   }
   toast.dismiss();
@@ -312,7 +312,7 @@ export const deleteSubSection = async function (token, data) {
     result = response.data.data;
   } catch (error) {
     console.log("Cannot delete subsection in COURSE_DETAIL_API");
-    console.log(error);
+    // console.log(error);
     toast.error("Cannot delete subsection");
   }
   toast.dismiss();
@@ -327,14 +327,14 @@ export const markLectureAsComplete = async (token, data) => {
     const response = await apiConnector("POST", LECTURE_COMPLETION_API, data, {
       Authorization: `Bearer ${token}`,
     });
-    console.log("MARK THE LECTURE AS COMPLETE API RESPONSE", response);
+    // console.log("MARK THE LECTURE AS COMPLETE API RESPONSE", response);
     if (!response.data.message) {
       throw new Error(response.data.message);
     }
     toast.success("Lecture completed");
     result = true;
   } catch (error) {
-    console.log("Mark the LECTURE as COMPLETE API Error", error);
+    //  console.log("Mark the LECTURE as COMPLETE API Error", error);
     toast.error(error.message);
     result = false;
   }
@@ -358,7 +358,7 @@ export const createRating = async (token, data) => {
     toast.success("Rating created");
     success = true;
   } catch (error) {
-    console.log("Create rating API error: ", error);
+    //  console.log("Create rating API error: ", error);
     toast.error(error.message);
   }
   toast.dismiss(toastId);

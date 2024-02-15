@@ -41,9 +41,6 @@ export default function CoursesTable({ courses, setCourses }) {
               Courses
             </Th>
             <Th className="text-left text-sm font-medium uppercase text-richblack-100">
-              Duration
-            </Th>
-            <Th className="text-left text-sm font-medium uppercase text-richblack-100">
               Price
             </Th>
             <Th className="text-left text-sm font-medium uppercase text-richblack-100">
@@ -62,15 +59,15 @@ export default function CoursesTable({ courses, setCourses }) {
             courses?.map((course) => (
               <Tr
                 key={course._id}
-                className="flex gap-x-10 border-b border-richblack-800 px-6 py-8"
+                className="mt-6 flex gap-x-10 border-b border-richblack-800 px-6 py-8 sm:mt-0"
               >
-                <Td className="flex flex-1 gap-x-4">
+                <Td className="flex flex-1 flex-col gap-4 sm:flex-row  sm:gap-x-4">
                   <img
                     src={course?.thumbnail}
                     alt={course?.courseName}
                     className="h-[148px] w-[220px] rounded-lg object-cover"
                   />
-                  <div className="flex flex-col justify-between">
+                  <div className="flex flex-col justify-between gap-2 sm:gap-0">
                     <p className="text-lg font-semibold text-richblack-5">
                       {course.courseName}
                     </p>
@@ -101,13 +98,11 @@ export default function CoursesTable({ courses, setCourses }) {
                     )}
                   </div>
                 </Td>
-                <Td className="text-sm font-medium text-richblack-100">
-                  2hr 30min
-                </Td>
-                <Td className="text-sm font-medium text-richblack-100">
+
+                <Td className="mt-4 text-sm font-medium text-richblack-100 sm:mt-0">
                   ₹{course.price}
                 </Td>
-                <Td className="text-sm font-medium text-richblack-100 ">
+                <Td className="mt-4 text-sm font-medium text-richblack-100 sm:mt-0 ">
                   {/* EDIT AND DELETE BUTTONS */}
                   <button
                     disabled={loading}

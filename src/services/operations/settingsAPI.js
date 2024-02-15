@@ -27,14 +27,14 @@ export function updateDisplayPicture(token, formData) {
       if (!response.data.success) {
         throw new Error(response.data.message);
       }
-      console.log(response.data);
+      //  console.log(response.data);
       toast.success("Updated profile picture successfully");
       disptach(userActions.setUser(response.data.data));
       localStorage.removeItem("user");
       localStorage.setItem("user", JSON.stringify(response.data.data));
     } catch (error) {
-      console.log("Error occurred while updating profile");
-      console.log(error);
+      //  console.log("Error occurred while updating profile");
+      //   console.log(error);
       toast.error("Cannot update profile picture");
     }
     toast.dismiss(toastId);
@@ -58,8 +58,8 @@ export function updateProfileData(token, formData) {
       localStorage.removeItem("user");
       localStorage.setItem("user", JSON.stringify(response.data.data));
     } catch (error) {
-      console.log(error.response.data);
-      console.log(error);
+      //  console.log(error.response.data);
+      //  console.log(error);
     }
     toast.dismiss(toastId);
     toast.success("Details updated successfully");
@@ -81,8 +81,8 @@ export function deleteAccount(token, navigate) {
       dispatch(logout(navigate));
       toast.success("Account deleted successfully");
     } catch (error) {
-      console.log(error.response.data.message);
-      console.log(error.response);
+      // console.log(error.response.data.message);
+      // console.log(error.response);
       toast.error("Cannot delete account");
     }
     toast.dismiss(toastId);

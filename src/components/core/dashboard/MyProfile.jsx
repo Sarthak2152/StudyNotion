@@ -18,7 +18,7 @@ function MyProfile() {
       <h1 className="mb-14 text-3xl font-medium text-richblack-5">
         My Profile
       </h1>
-      <div className="flex items-center justify-between rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8 px-12">
+      <div className="flex flex-col items-start justify-between gap-4 rounded-md border-[1px] border-richblack-700 bg-richblack-800 p-8   sm:flex-row sm:items-center sm:gap-0 sm:px-12">
         <div className="flex items-center gap-x-4">
           <img
             src={user?.image}
@@ -83,8 +83,8 @@ function MyProfile() {
             <RiEditBoxLine />
           </Button>
         </div>
-        <div className="flex max-w-[500px] justify-between">
-          <div className="flex flex-col gap-y-5">
+        <div className="flex max-w-[500px] flex-col justify-between gap-4  sm:flex-row sm:gap-0">
+          <div className="flex flex-col gap-y-5 ">
             <div>
               <p className="mb-2 text-sm text-richblack-600">First Name</p>
               <p className="text-sm font-medium text-richblack-5">

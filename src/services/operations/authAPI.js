@@ -23,9 +23,9 @@ export function sendOtp(email, navigate) {
         email,
         checkUserPresent: true,
       });
-      console.log("SENDOTP API RESPONSE............", response);
+      //console.log("SENDOTP API RESPONSE............", response);
 
-      console.log(response.data.success);
+      // console.log(response.data.success);
 
       if (!response.data.success) {
         throw new Error(response.data.message);
@@ -34,7 +34,7 @@ export function sendOtp(email, navigate) {
       toast.success("OTP Sent Successfully");
       navigate("/verify-email");
     } catch (error) {
-      console.log("SENDOTP API ERROR............", error);
+      // console.log("SENDOTP API ERROR............", error);
       toast.error("Could Not Send OTP");
     }
     dispatch(authActions.setLoading(false));
@@ -66,7 +66,7 @@ export function signUp(
         otp,
       });
 
-      console.log("SIGNUP API RESPONSE............", response);
+      // console.log("SIGNUP API RESPONSE............", response);
 
       if (!response.data.success) {
         throw new Error(response.data.message);
@@ -74,7 +74,7 @@ export function signUp(
       toast.success("Signup Successful");
       navigate("/login");
     } catch (error) {
-      console.log("SIGNUP API ERROR............", error);
+      // console.log("SIGNUP API ERROR............", error);
       toast.error("Signup Failed");
       navigate("/signup");
     }
@@ -93,7 +93,7 @@ export function login(email, password, navigate) {
         password,
       });
 
-      console.log("LOGIN API RESPONSE............", response.data);
+      // console.log("LOGIN API RESPONSE............", response.data);
 
       if (!response.data.success) {
         throw new Error(response.data.message);
@@ -111,7 +111,7 @@ export function login(email, password, navigate) {
       localStorage.setItem("user", JSON.stringify(response.data.user));
       navigate("/dashboard/my-profile");
     } catch (error) {
-      console.log("LOGIN API ERROR............", error);
+      // console.log("LOGIN API ERROR............", error);
       toast.error(error.response.data.message);
     }
     dispatch(authActions.setLoading(false));
@@ -135,18 +135,18 @@ export function getPasswordResetToken(email, setEmailSent) {
   return async (dispatch) => {
     dispatch(authActions.setLoading(true));
     try {
-      console.log(RESETPASSTOKEN_API);
+      // console.log(RESETPASSTOKEN_API);
       const response = await apiConnector("POST", RESETPASSTOKEN_API, {
         email,
       });
-      console.log("Reset password token response: " + response.data);
+      // console.log("Reset password token response: " + response.data);
       if (!response.data.success) {
         throw new Error(response.data.message);
       }
       toast.success("Reset email sent");
       setEmailSent(true);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       toast.error("Failed to send mail while resetting password");
     }
     dispatch(authActions.setLoading(false));
@@ -162,17 +162,17 @@ export function resetPassword(password, confirmPassword, token, navigate) {
         confirmPassword,
         token,
       });
-      console.log("Response from API: " + response.data);
+      // console.log("Response from API: " + response.data);
       if (!response.data.success) {
         throw new Error(response.data.message);
       }
       toast.success("Password reset successful");
       navigate("/login");
     } catch (error) {
-      console.log(
-        "Error occurred while resetting password ",
-        error.response.data,
-      );
+      // console.log(
+      //   "Error occurred while resetting password ",
+      //   error.response.data,
+      // );
       toast.error("Error occurred while resetting password");
     }
     dispatch(authActions.setLoading(false));

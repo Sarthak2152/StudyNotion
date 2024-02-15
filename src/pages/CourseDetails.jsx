@@ -15,6 +15,8 @@ import { buyCourse } from "../services/operations/studentFeaturesAPI";
 import LoginModal from "../components/core/Course/LoginModal";
 import { PropagateLoader } from "react-spinners";
 import { Button } from "@/components/ui/button";
+import { toast } from "react-hot-toast";
+import { ACCOUNT_TYPE } from "../utils/constants";
 function CourseDetails() {
   // global states
   const { user } = useSelector((state) => state.profile);
@@ -92,6 +94,10 @@ function CourseDetails() {
   } = response?.data;
 
   const handleBuyCourse = () => {
+    if (user.accountType === ACCOUNT_TYPE.INSTRUCTOR) {
+      toast.error("Instructor cannot buy a course");
+      return;
+    }
     if (token) {
       buyCourse(token, [courseId], user, navigate, dispatch);
       return;
@@ -156,8 +162,17 @@ function CourseDetails() {
               <p className="space-x-3 pb-4 text-3xl font-semibold text-richblack-5">
                 Rs. {price}
               </p>
-              <Button variant="yellow" onClick={handleBuyCourse}>
-                Buy Now
+              <Button
+                variant="yellow"
+                onClick={
+                  user && response?.data?.studentsEnrolled?.includes(user?._id)
+                    ? () => navigate("/dashboard/enrolled-courses")
+                    : handleBuyCourse
+                }
+              >
+                {user && response?.data?.studentsEnrolled?.includes(user?._id)
+                  ? "Go To Course"
+                  : "Buy Now"}
               </Button>
               <Button variant="normal" className="bg-richblack-500">
                 Add to Cart

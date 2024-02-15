@@ -48,10 +48,12 @@ function Instructor() {
         </p>
       </div>
       {loading ? (
-        <PropagateLoader color="#afb2bf" />
+        <div className="flex min-h-[calc(100vh-3.5rem)] items-center justify-center">
+          <PropagateLoader color="#afb2bf" />
+        </div>
       ) : courses.length > 0 ? (
         <div>
-          <div className="my-4 flex h-[450px] space-x-4">
+          <div className="my-4 flex  flex-col gap-6 md:flex-row md:gap-0 md:space-x-4">
             {/* Render chart / graph */}
             {totalAmount > 0 || totalStudents > 0 ? (
               <InstructorChart courses={instructorData} />
@@ -64,7 +66,7 @@ function Instructor() {
               </div>
             )}
             {/* Total Statistics */}
-            <div className="flex min-w-[250px] flex-col rounded-md bg-richblack-800 p-6">
+            <div className="order-3 flex min-w-[250px] flex-col rounded-md bg-richblack-800 p-6 md:order-3">
               <p className="text-lg font-bold text-richblack-5">Statistics</p>
               <div className="mt-4 space-y-4">
                 <div>
@@ -88,21 +90,24 @@ function Instructor() {
               </div>
             </div>
           </div>
-          <div className="rounded-md bg-richblack-800 p-6">
+          <div className="relative rounded-md bg-richblack-800 p-6">
             {/* Render 3 courses */}
-            <div className="flex items-center justify-between">
+            <div className=" flex items-center justify-between ">
               <p className="text-lg font-bold text-richblack-5">Your Courses</p>
               <Link to="/dashboard/my-courses">
                 <p className="text-xs font-semibold text-yellow-50">View All</p>
               </Link>
             </div>
             <div className="my-4 flex items-start space-x-6">
-              {courses.slice(0, 3).map((course) => (
-                <div key={course._id} className="w-1/3">
+              {courses.slice(0, 3).map((course, index) => (
+                <div
+                  key={course._id}
+                  className={`w-1/2 md:w-1/3 ${index === 2 && "hidden md:block"}`}
+                >
                   <img
                     src={course.thumbnail}
                     alt={course.courseName}
-                    className="h-[201px] w-full rounded-md object-cover"
+                    className="h-[125px] w-full rounded-md object-cover sm:h-[201px]"
                   />
                   <div className="mt-3 w-full">
                     <p className="text-sm font-medium text-richblack-50">

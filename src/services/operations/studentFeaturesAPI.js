@@ -54,10 +54,10 @@ export async function buyCourse(
     if (!orderResponse.data.success) {
       throw new Error(orderResponse.data.message);
     }
-    console.log(
-      "THIS is response fronm capturePayment backend ",
-      orderResponse,
-    );
+    // console.log(
+    //   "THIS is response fronm capturePayment backend ",
+    //   orderResponse,
+    // );
 
     const options = {
       key: import.meta.env.VITE_RAZORPAY_KEY,
@@ -85,17 +85,17 @@ export async function buyCourse(
     paymentObject.open();
     paymentObject.on("payment.failed", function (response) {
       toast.error("oops, payment failed");
-      console.log(response.error);
+      //console.log(response.error);
     });
   } catch (error) {
-    console.log("PAYMENT API ERROR.....", error);
+    // console.log("PAYMENT API ERROR.....", error);
     toast.error("Could not make Payment");
   }
   toast.dismiss(toastId);
 }
 
 async function sendPaymentSuccessEmail(response, amount, token) {
-  console.log("This is inside the email", response);
+  // console.log("This is inside the email", response);
   try {
     await apiConnector(
       "POST",
@@ -110,7 +110,7 @@ async function sendPaymentSuccessEmail(response, amount, token) {
       },
     );
   } catch (error) {
-    console.log("PAYMENT SUCCESS EMAIL ERROR....", error);
+    // console.log("PAYMENT SUCCESS EMAIL ERROR....", error);
   }
 }
 
@@ -118,7 +118,7 @@ async function verifyPayment(bodyData, token, navigate, dispatch) {
   const toastId = toast.loading("Verifying Payment....");
   dispatch(courseActions.setPaymentLoading(true));
   try {
-    console.log("THis is inside verify payment", bodyData);
+    // console.log("THis is inside verify payment", bodyData);
     const response = await apiConnector("POST", COURSE_VERIFY_API, bodyData, {
       Authorization: `Bearer ${token}`,
     });
@@ -130,7 +130,7 @@ async function verifyPayment(bodyData, token, navigate, dispatch) {
     navigate("/dashboard/enrolled-courses");
     dispatch(cartActions.resetCart());
   } catch (error) {
-    console.log("PAYMENT VERIFY ERROR....", error);
+    //  console.log("PAYMENT VERIFY ERROR....", error);
     toast.error("Could not verify Payment");
   }
   toast.dismiss(toastId);
