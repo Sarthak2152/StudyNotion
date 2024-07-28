@@ -91,12 +91,18 @@ function LoginForm() {
       <Button
         type="button"
         onClick={() => {
-          setFormData(() => {
-            return { email: "sarthakapoor2152@gmail.com", password: "123456" };
-          });
+          dispatch(login("sarthakapoor2152@gmail.com", "123456", navigate));
         }}
       >
-        Add Demo Credentials
+        Demo Student Sign In
+      </Button>
+      <Button
+        type="button"
+        onClick={() => {
+          dispatch(login("vermaprashant2002@gmail.com", "123456", navigate));
+        }}
+      >
+        Demo Instructor Sign In
       </Button>
     </form>
   );
