@@ -3,6 +3,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../../services/operations/authAPI";
+import { Button } from "../../ui/button";
 function LoginForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -87,6 +88,16 @@ function LoginForm() {
       >
         Sign In
       </button>
+      <Button
+        type="button"
+        onClick={() => {
+          setFormData(() => {
+            return { email: "sarthakapoor2152@gmail.com", password: "123456" };
+          });
+        }}
+      >
+        Add Demo Credentials
+      </Button>
     </form>
   );
 }
